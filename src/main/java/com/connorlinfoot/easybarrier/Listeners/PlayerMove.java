@@ -31,7 +31,7 @@ public class PlayerMove implements Listener {
         int x = origin.getBlockX();
         int y = origin.getBlockY();
         int z = origin.getBlockZ();
-        int py = pLocation.getBlockY();
+        int py = (int) pLocation.getY();
         World world = origin.getWorld();
 
         for (int cy = 2; cy < 512; cy++) {
