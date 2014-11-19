@@ -1,7 +1,6 @@
 package com.connorlinfoot.easybarrier.Listeners;
 
 import com.connorlinfoot.easybarrier.EasyBarrier;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -20,6 +19,7 @@ public class PlayerMove implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
+        if (player.hasPermission("easybarrier.bypass")) return;
         String mat = EasyBarrier.getPlugin().getConfig().getString("Barrier Block");
         boolean aboveY = EasyBarrier.getPlugin().getConfig().getBoolean("Check Above Y Only");
         Block closest = getBlockY(event.getTo(), new HashSet<Integer>(Arrays.asList(Material.getMaterial(mat).getId())), aboveY);

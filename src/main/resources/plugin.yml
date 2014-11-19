@@ -6,3 +6,6 @@ authors: [Connor Linfoot]
 commands:
   eb:
     description: EasyBarrier command
+permissions:
+  easybarrier.bypass:
+    default: op
