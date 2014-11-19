@@ -1,0 +1,8 @@
+name: EasyBarrier
+description: EasyBarrier
+main: com.connorlinfoot.easybarrier.EasyBarrier
+version: 1.0-SNAPSHOT
+authors: [Connor Linfoot]
+commands:
+  eb:
+    description: EasyBarrier command
