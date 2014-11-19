@@ -12,7 +12,6 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class PlayerMove implements Listener {
@@ -21,22 +20,21 @@ public class PlayerMove implements Listener {
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         String mat = EasyBarrier.getPlugin().getConfig().getString("Barrier Block");
-        //player.sendMessage("Event is being called");
-        //player.sendMessage(mat);
-        //player.sendMessage(String.valueOf(event.getTo().getBlock().getType()));
-        Block closest = closestBlock(event.getTo(), new HashSet<Integer>(Arrays.asList(Material.getMaterial(mat).getId())));
+        boolean aboveY = EasyBarrier.getPlugin().getConfig().getBoolean("Check Above Y Only");
+        Block closest = getBlockY(event.getTo(), new HashSet<Integer>(Arrays.asList(Material.getMaterial(mat).getId())), aboveY);
         if (closest != null) {
             event.setCancelled(true);
         }
     }
 
-    private static Block closestBlock(Location origin, Set<Integer> types) {
+    private static Block getBlockY(Location origin, Set<Integer> types, boolean aboveOnly) {
         int x = origin.getBlockX();
         int y = origin.getBlockY();
         int z = origin.getBlockZ();
         World world = origin.getWorld();
 
         for (int cy = 2; cy < 512; cy++) {
+            if (aboveOnly && cy < y) continue;
             int testY;
             if ((cy & 1) == 0) {
                 testY = y + cy / 2;
