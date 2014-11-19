@@ -34,7 +34,7 @@ public class PlayerMove implements Listener {
         World world = origin.getWorld();
 
         for (int cy = 2; cy < 512; cy++) {
-            if (aboveOnly && cy < y) continue;
+            if (aboveOnly && cy < y) break;
             int testY;
             if ((cy & 1) == 0) {
                 testY = y + cy / 2;
