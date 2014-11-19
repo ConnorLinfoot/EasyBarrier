@@ -47,7 +47,7 @@ public class PlayerMove implements Listener {
             }
 
             if (types.contains(world.getBlockTypeIdAt(x, testY, z))) {
-                if (aboveOnly && y < cy) return null;
+                if (aboveOnly && testY < y) return null;
                 return world.getBlockAt(x, testY, z);
             }
         }
