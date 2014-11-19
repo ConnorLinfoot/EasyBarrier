@@ -35,9 +35,6 @@ public class PlayerMove implements Listener {
         World world = origin.getWorld();
 
         for (int cy = 2; cy < 512; cy++) {
-            if (aboveOnly && y < cy) break;
-            Bukkit.broadcastMessage(y + " - " + cy);
-
             int testY;
             if ((cy & 1) == 0) {
                 testY = y + cy / 2;
@@ -49,7 +46,10 @@ public class PlayerMove implements Listener {
                     continue;
             }
 
-            if (types.contains(world.getBlockTypeIdAt(x, testY, z))) return world.getBlockAt(x, testY, z);
+            if (types.contains(world.getBlockTypeIdAt(x, testY, z))) {
+                if (aboveOnly && y < cy) return null;
+                return world.getBlockAt(x, testY, z);
+            }
         }
 
         return null;
