@@ -1,6 +1,7 @@
 package com.connorlinfoot.easybarrier.Listeners;
 
 import com.connorlinfoot.easybarrier.EasyBarrier;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -36,6 +37,8 @@ public class PlayerMove implements Listener {
 
         for (int cy = 2; cy < 512; cy++) {
             if (aboveOnly && py < y) break;
+            Bukkit.broadcastMessage(py + " - " + y);
+            if (true) break;
             int testY;
             if ((cy & 1) == 0) {
                 testY = y + cy / 2;
