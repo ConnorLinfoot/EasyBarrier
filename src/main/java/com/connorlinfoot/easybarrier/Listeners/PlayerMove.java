@@ -37,7 +37,7 @@ public class PlayerMove implements Listener {
         for (int cy = 2; cy < 512; cy++) {
             if (aboveOnly && y < cy) break;
             Bukkit.broadcastMessage(y + " - " + cy);
-            if (true) break;
+
             int testY;
             if ((cy & 1) == 0) {
                 testY = y + cy / 2;
