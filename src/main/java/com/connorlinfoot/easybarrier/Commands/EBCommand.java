@@ -27,7 +27,7 @@ public class EBCommand implements CommandExecutor {
             Player player = (Player) sender;
             ItemStack itemStack = player.getItemInHand();
             if (itemStack.getType() == null || itemStack.getType() == Material.AIR) {
-                sender.sendMessage(EasyBarrier.Prefix + ChatColor.RED + "Your hand is empty!");
+                sender.sendMessage(EasyBarrier.Prefix + ChatColor.RED + "Your hand is empty, please hold an item");
                 return false;
             }
 
@@ -40,6 +40,20 @@ public class EBCommand implements CommandExecutor {
                 EasyBarrier.Barrier = Material.NETHER_FENCE;
 
             sender.sendMessage(EasyBarrier.Prefix + ChatColor.GREEN + "You have updated the block for EasyBarrier and the config has been reloaded");
+            return true;
+        }
+
+        if (args.length >= 1 && args[0].equalsIgnoreCase("reload")) {
+            if (!sender.hasPermission("easybarrier.reload")) {
+                sender.sendMessage(EasyBarrier.Prefix + ChatColor.RED + "You do not have the permission \"" + ChatColor.BOLD + "easybarrier.reload" + ChatColor.RESET + ChatColor.RED + "\"");
+                return false;
+            }
+
+            String mat = EasyBarrier.getPlugin().getConfig().getString("Barrier Block");
+            EasyBarrier.Barrier = Material.getMaterial(mat);
+            if (EasyBarrier.Barrier == null)
+                EasyBarrier.Barrier = Material.NETHER_FENCE;
+            sender.sendMessage(EasyBarrier.Prefix + ChatColor.GREEN + "Config has been reloaded");
             return true;
         }
         sender.sendMessage(ChatColor.AQUA + "\"" + EasyBarrier.getPlugin().getDescription().getName() + "\" - Version: " + EasyBarrier.getPlugin().getDescription().getVersion());

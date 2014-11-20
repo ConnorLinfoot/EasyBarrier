@@ -11,3 +11,5 @@ permissions:
     default: op
   easybarrier.block:
     default: op
+  easybarrier.reload:
+    default: op
