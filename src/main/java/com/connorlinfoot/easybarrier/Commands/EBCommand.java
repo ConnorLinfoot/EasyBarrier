@@ -56,6 +56,7 @@ public class EBCommand implements CommandExecutor {
             sender.sendMessage(EasyBarrier.Prefix + ChatColor.GREEN + "Config has been reloaded");
             return true;
         }
+
         sender.sendMessage(ChatColor.AQUA + "\"" + EasyBarrier.getPlugin().getDescription().getName() + "\" - Version: " + EasyBarrier.getPlugin().getDescription().getVersion());
         return true;
     }

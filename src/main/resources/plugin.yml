@@ -1,7 +1,7 @@
 name: EasyBarrier
 description: EasyBarrier
 main: com.connorlinfoot.easybarrier.EasyBarrier
-version: 1.1-SNAPSHOT
+version: 1.1
 authors: [Connor Linfoot]
 commands:
   eb:

@@ -18,6 +18,7 @@ public class EasyBarrier extends JavaPlugin {
     public static String Prefix = ChatColor.GRAY + "[" + ChatColor.AQUA + "EasyBarrier" + ChatColor.GRAY + "] " + ChatColor.RESET;
     public static Material Barrier = null;
 
+    @Override
     public void onEnable() {
         plugin = this;
         getConfig().options().copyDefaults(true);
@@ -48,6 +49,7 @@ public class EasyBarrier extends JavaPlugin {
         registerEvents(console);
     }
 
+    @Override
     public void onDisable() {
         getLogger().info(getDescription().getName() + " has been disabled!");
     }
