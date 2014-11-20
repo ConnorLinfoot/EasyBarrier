@@ -9,3 +9,5 @@ commands:
 permissions:
   easybarrier.bypass:
     default: op
+  easybarrier.block:
+    default: op
