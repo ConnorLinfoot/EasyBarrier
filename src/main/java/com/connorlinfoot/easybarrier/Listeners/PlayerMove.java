@@ -20,12 +20,8 @@ public class PlayerMove implements Listener {
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         if (player.hasPermission("easybarrier.bypass")) return;
-        String mat = EasyBarrier.getPlugin().getConfig().getString("Barrier Block");
-        Material material = Material.getMaterial(mat);
-        if (material == null)
-            material = Material.NETHER_FENCE;
         boolean aboveY = EasyBarrier.getPlugin().getConfig().getBoolean("Check Above Y Only");
-        Block closest = getBlockY(event.getTo(), new HashSet<Integer>(Arrays.asList(material.getId())), aboveY);
+        Block closest = getBlockY(event.getTo(), new HashSet<Integer>(Arrays.asList(EasyBarrier.Barrier.getId())), aboveY);
         if (closest != null) {
             event.setCancelled(true);
         }

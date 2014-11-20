@@ -33,7 +33,13 @@ public class EBCommand implements CommandExecutor {
 
             EasyBarrier.getPlugin().getConfig().set("Barrier Block", itemStack.getType().toString());
             EasyBarrier.getPlugin().saveConfig();
-            sender.sendMessage(EasyBarrier.Prefix + ChatColor.GREEN + "You have updated the block for EasyBarrier");
+
+            String mat = EasyBarrier.getPlugin().getConfig().getString("Barrier Block");
+            EasyBarrier.Barrier = Material.getMaterial(mat);
+            if (EasyBarrier.Barrier == null)
+                EasyBarrier.Barrier = Material.NETHER_FENCE;
+
+            sender.sendMessage(EasyBarrier.Prefix + ChatColor.GREEN + "You have updated the block for EasyBarrier and the config has been reloaded");
             return true;
         }
         sender.sendMessage(ChatColor.AQUA + "\"" + EasyBarrier.getPlugin().getDescription().getName() + "\" - Version: " + EasyBarrier.getPlugin().getDescription().getVersion());

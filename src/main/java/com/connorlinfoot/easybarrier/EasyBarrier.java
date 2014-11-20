@@ -25,6 +25,10 @@ public class EasyBarrier extends JavaPlugin {
         Server server = getServer();
         ConsoleCommandSender console = server.getConsoleSender();
 
+        String mat = EasyBarrier.getPlugin().getConfig().getString("Barrier Block");
+        Barrier = Material.getMaterial(mat);
+        if (Barrier == null)
+            Barrier = Material.NETHER_FENCE;
 
         console.sendMessage("");
         console.sendMessage(ChatColor.BLUE + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
