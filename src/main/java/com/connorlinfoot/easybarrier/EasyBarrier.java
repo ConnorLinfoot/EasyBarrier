@@ -4,6 +4,7 @@ import com.connorlinfoot.easybarrier.Commands.EBCommand;
 import com.connorlinfoot.easybarrier.Listeners.PlayerMove;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.Plugin;
@@ -15,7 +16,7 @@ public class EasyBarrier extends JavaPlugin {
     private static Plugin plugin;
     public static boolean SNAPSHOT = false;
     public static String Prefix = ChatColor.GRAY + "[" + ChatColor.AQUA + "EasyBarrier" + ChatColor.GRAY + "] " + ChatColor.RESET;
-    public static int maxPlayers = 0;
+    public static Material Barrier = null;
 
     public void onEnable() {
         plugin = this;
@@ -24,12 +25,6 @@ public class EasyBarrier extends JavaPlugin {
         Server server = getServer();
         ConsoleCommandSender console = server.getConsoleSender();
 
-        int maxPlayers2 = EasyBarrier.getPlugin().getConfig().getInt("Max Players");
-        if (maxPlayers2 == -1) {
-            maxPlayers = Bukkit.getMaxPlayers();
-        } else {
-            maxPlayers = maxPlayers2;
-        }
 
         console.sendMessage("");
         console.sendMessage(ChatColor.BLUE + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
