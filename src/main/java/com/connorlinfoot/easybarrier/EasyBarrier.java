@@ -14,7 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class EasyBarrier extends JavaPlugin {
     private static Plugin plugin;
     public static boolean SNAPSHOT = false;
-    public static String Prefix = "[EasyBarrier] ";
+    public static String Prefix = ChatColor.GRAY + "[" + ChatColor.AQUA + "EasyBarrier" + ChatColor.GRAY + "] " + ChatColor.RESET;
     public static int maxPlayers = 0;
 
     public void onEnable() {
